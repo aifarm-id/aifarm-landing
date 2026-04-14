@@ -8,7 +8,10 @@
       "Bash(git remote add:*)",
       "Bash(git push:*)",
       "Bash(dig:*)",
-      "Bash(nslookup:*)"
+      "Bash(nslookup:*)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(git stash pop:*)"
     ]
   }
 }
