@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AiFarm - Your Dairy Goat Farm Partner</title>
+    <meta name="description" content="AiFarm is an Agritech Startup providing end-to-end solutions in dairy goat farming">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS 4 -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style type="text/tailwindcss">
+        @theme {
+            --font-sans: 'Open Sans', sans-serif;
+            --font-display: 'Poppins', sans-serif;
+
+            --color-primary: #0d9488;
+            --color-secondary: #0ea5e9;
+            --color-accent: #ff901c;
+            --color-pink: #ff0071;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(13, 148, 136, 0.08) 0%, rgba(14, 165, 233, 0.05) 100%);
+        }
+
+        .feature-icon {
+            @apply w-14 h-14 rounded-full flex items-center justify-center text-2xl text-white;
+        }
+
+        .feature-icon-green {
+            @apply bg-gradient-to-br from-primary to-teal-600;
+        }
+
+        .feature-icon-teal {
+            @apply bg-gradient-to-br from-secondary to-sky-600;
+        }
+
+        .feature-icon-orange {
+            @apply bg-gradient-to-br from-accent to-orange-600;
+        }
+
+        .feature-icon-pink {
+            @apply bg-gradient-to-br from-pink to-pink-600;
+        }
+
+        .pricing-card {
+            @apply bg-white rounded-2xl shadow-lg p-6 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2;
+        }
+
+        .nav-link {
+            @apply text-gray-700 hover:text-primary font-medium transition-colors duration-200;
+        }
+
+        .nav-link.active {
+            @apply text-primary;
+        }
+
+        .btn-primary {
+            @apply bg-primary hover:bg-teal-600 text-white font-semibold rounded-full px-8 py-3 transition-all duration-300 inline-flex items-center gap-2;
+        }
+
+        .btn-outline {
+            @apply border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold rounded-full px-8 py-3 transition-all duration-300;
+        }
+
+        .section-title {
+            @apply text-3xl md:text-4xl font-bold text-gray-900 mb-2;
+        }
+
+        .section-subtitle {
+            @apply text-lg text-gray-600 mb-12;
+        }
+
+        .feature-box {
+            @apply flex items-start gap-4 p-4 rounded-xl bg-gray-50 hover:bg-white transition-all duration-300;
+        }
+
+        /* Swiper customization */
+        .clients-slider .swiper-slide {
+            @apply flex items-center justify-center opacity-50 hover:opacity-100 transition-opacity duration-300;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            @apply fixed inset-0 bg-white z-50 transform translate-x-full transition-transform duration-300;
+        }
+
+        .mobile-menu.open {
+            @apply translate-x-0;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            @apply fixed bottom-8 right-8 w-12 h-12 bg-primary text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300 z-50;
+        }
+
+        .back-to-top.visible {
+            @apply opacity-100 visible;
+        }
+
+        .back-to-top:hover {
+            @apply -translate-y-1;
+        }
+
+        /* Swiper pagination */
+        .swiper-pagination-bullet-active {
+            @apply bg-primary;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-700">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2">
+                    <img src="assets/aifarm.png" alt="AiFarm" class="h-10">
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#hero" class="nav-link active">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#values" class="nav-link">Our Values</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <a href="#clients" class="nav-link">Partners</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden lg:block">
+                    <a href="#pricing" class="btn-primary text-sm">Get Started</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-toggle" class="lg:hidden p-2 text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <img src="assets/aifarm.png" alt="AiFarm" class="h-10">
+                <button id="mobile-close" class="p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <nav class="flex flex-col gap-4">
+                <a href="#hero" class="text-lg font-medium text-gray-700 py-2 border-b">Home</a>
+                <a href="#about" class="text-lg font-medium text-gray-700 py-2 border-b">About</a>
+                <a href="#values" class="text-lg font-medium text-gray-700 py-2 border-b">Our Values</a>
+                <a href="#features" class="text-lg font-medium text-gray-700 py-2 border-b">Features</a>
+                <a href="#pricing" class="text-lg font-medium text-gray-700 py-2 border-b">Pricing</a>
+                <a href="#clients" class="text-lg font-medium text-gray-700 py-2 border-b">Partners</a>
+                <a href="#pricing" class="btn-primary text-center mt-4">Get Started</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center hero-gradient pt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Hero Content -->
+                <div data-aos="fade-up">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6" style="font-family: 'Poppins', sans-serif;">
+                        Your Dairy Goat Farm Partner
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="200">
+                        We offer modern solutions for growing your dairy goat farm business.
+                    </p>
+                    <div data-aos="fade-up" data-aos-delay="400">
+                        <a href="#about" class="btn-primary">
+                            Get Started
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image/Lottie -->
+                <div data-aos="zoom-out" data-aos-delay="200">
+                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+                    <dotlottie-player
+                        src="https://lottie.host/62218cab-3246-4771-8e8b-23544aa3be4f/67qmWK9cPq.json"
+                        background="transparent"
+                        speed="1"
+                        style="width: 100%; height: 400px;"
+                        direction="1"
+                        mode="normal"
+                        loop
+                        autoplay>
+                    </dotlottie-player>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div data-aos="fade-up">
+                    <p class="text-primary font-semibold mb-2">WHO WE ARE</p>
+                    <h2 class="section-title" style="font-family: 'Poppins', sans-serif;">AiFarm</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        AiFarm is an Agritech Startup that provides end-to-end process solutions in the dairy goat farming sector from the supply of good genetic goats, animal feed, farm management technology, and access to the goat milk market (factories & end customers) to increase growth and effectiveness.
+                    </p>
+                    <a href="#features" class="btn-outline inline-flex items-center gap-2">
+                        Learn More
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Image -->
+                <div data-aos="zoom-out" data-aos-delay="200">
+                    <img src="assets/about.png" alt="About AiFarm" class="w-full rounded-2xl shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="values" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="section-title" style="font-family: 'Poppins', sans-serif;">Our Values</h2>
+                <p class="section-subtitle">Check our values</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Growth -->
+                <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-24 h-24 mx-auto mb-6">
+                        <img src="assets/growth.png" alt="Growth" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Growth</h3>
+                </div>
+
+                <!-- Effectiveness -->
+                <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-24 h-24 mx-auto mb-6">
+                        <img src="assets/effectiveness.png" alt="Effectiveness" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Effectiveness</h3>
+                </div>
+
+                <!-- Integrated -->
+                <div class="bg-white rounded-2xl p-8 text-center shadow-sm hover:shadow-lg transition-shadow" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-24 h-24 mx-auto mb-6">
+                        <img src="assets/integrated.png" alt="Integrated" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900">Integrated</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="section-title" style="font-family: 'Poppins', sans-serif;">Features</h2>
+                <p class="section-subtitle">Check our features</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Features Image -->
+                <div data-aos="fade-right">
+                    <img src="assets/features.png" alt="Features" class="w-full rounded-2xl">
+                </div>
+
+                <!-- Features List -->
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="feature-box" data-aos="zoom-out" data-aos-delay="200">
+                        <div class="feature-icon feature-icon-green">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900">Livestock Productivity Data</h3>
+                    </div>
+
+                    <div class="feature-box" data-aos="zoom-out" data-aos-delay="300">
+                        <div class="feature-icon feature-icon-teal">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900">ERP for Farm</h3>
+                    </div>
+
+                    <div class="feature-box" data-aos="zoom-out" data-aos-delay="400">
+                        <div class="feature-icon feature-icon-orange">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900">IoT for Milking</h3>
+                    </div>
+
+                    <div class="feature-box" data-aos="zoom-out" data-aos-delay="500">
+                        <div class="feature-icon feature-icon-pink">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900">Goat Milk Market Access</h3>
+                    </div>
+
+                    <div class="feature-box" data-aos="zoom-out" data-aos-delay="600">
+                        <div class="feature-icon feature-icon-green">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900">Logistic Network Access</h3>
+                    </div>
+
+                    <div class="feature-box" data-aos="zoom-out" data-aos-delay="700">
+                        <div class="feature-icon feature-icon-teal">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-semibold text-gray-900">Cold Chain Management</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="section-title" style="font-family: 'Poppins', sans-serif;">Pricing</h2>
+                <p class="section-subtitle">Check our Pricing</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Data Record App -->
+                <div class="pricing-card" data-aos="zoom-in" data-aos-delay="100">
+                    <h3 class="text-xl font-bold mb-2 text-primary">Data Record App</h3>
+                    <div class="text-3xl font-bold text-gray-900 mb-4">Free</div>
+                    <div class="h-32 mb-4">
+                        <img src="assets/pricing-free.png" alt="Free" class="w-full h-full object-contain">
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Livestock Productivity
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Breeding Monitoring
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Feed Management
+                        </li>
+                    </ul>
+                    <a href="#pricing" class="btn-outline w-full text-center">Get Started</a>
+                </div>
+
+                <!-- Unique QR Tag -->
+                <div class="pricing-card relative" data-aos="zoom-in" data-aos-delay="200">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1 rounded-full">FEATURED</span>
+                    <h3 class="text-xl font-bold mb-2 text-primary">Unique QR Tag</h3>
+                    <div class="text-3xl font-bold text-gray-900 mb-4">
+                        <span class="text-lg font-normal">IDR</span> 15K
+                        <span class="text-sm font-normal text-gray-500">/ tag</span>
+                    </div>
+                    <div class="h-32 mb-4">
+                        <img src="assets/pricing-starter.png" alt="QR Tag" class="w-full h-full object-contain">
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Unique ID
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            QR Code
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            For Animal
+                        </li>
+                    </ul>
+                    <a href="#pricing" class="btn-primary w-full text-center">Buy Now</a>
+                </div>
+
+                <!-- IoT Milking System -->
+                <div class="pricing-card" data-aos="zoom-in" data-aos-delay="300">
+                    <h3 class="text-xl font-bold mb-2" style="color: #ff901c;">IoT Milking System</h3>
+                    <div class="text-2xl font-bold text-gray-900 mb-4">By Request</div>
+                    <div class="h-32 mb-4">
+                        <img src="assets/pricing-business.png" alt="IoT" class="w-full h-full object-contain">
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Measurement of Milk Volume
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Milk Quality
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Integrated System
+                        </li>
+                    </ul>
+                    <a href="#pricing" class="btn-outline w-full text-center">Buy Now</a>
+                </div>
+
+                <!-- Goat Milk Access -->
+                <div class="pricing-card" data-aos="zoom-in" data-aos-delay="400">
+                    <h3 class="text-xl font-bold mb-2" style="color: #ff0071;">Goat Milk Access</h3>
+                    <div class="text-2xl font-bold text-gray-900 mb-4">By Agreement</div>
+                    <div class="h-32 mb-4">
+                        <img src="assets/pricing-ultimate.png" alt="Milk Access" class="w-full h-full object-contain">
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Access to Goat Milk Factories
+                        </li>
+                        <li class="flex items-center gap-2 opacity-0">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Placeholder
+                        </li>
+                        <li class="flex items-center gap-2 opacity-0">
+                            <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Placeholder
+                        </li>
+                    </ul>
+                    <a href="mailto:admin@aifarm.id" class="btn-outline w-full text-center">Contact Admin</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients/Partners Section -->
+    <section id="clients" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="section-title" style="font-family: 'Poppins', sans-serif;">Our Partners</h2>
+                <p class="section-subtitle">PARTNER AND MEDIA COVERAGE</p>
+            </div>
+
+            <div class="clients-slider swiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide flex items-center justify-center p-4">
+                        <img src="assets/partners/kominfo.png" alt="Kominfo" class="max-h-20 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                    </div>
+                    <div class="swiper-slide flex items-center justify-center p-4">
+                        <img src="assets/partners/kpri.png" alt="KPRI" class="max-h-20 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                    </div>
+                    <div class="swiper-slide flex items-center justify-center p-4">
+                        <img src="assets/partners/kemenparekraf.png" alt="Kemenparekraf" class="max-h-20 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                    </div>
+                    <div class="swiper-slide flex items-center justify-center p-4">
+                        <img src="assets/partners/amikom.png" alt="Amikom" class="max-h-20 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                    </div>
+                    <div class="swiper-slide flex items-center justify-center p-4">
+                        <img src="assets/partners/1000startup.png" alt="1000 Startup" class="max-h-20 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                    </div>
+                    <div class="swiper-slide flex items-center justify-center p-4">
+                        <img src="assets/partners/indigo.png" alt="Indigo" class="max-h-20 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                    </div>
+                    <div class="swiper-slide flex items-center justify-center p-4">
+                        <img src="assets/partners/bsc.png" alt="BSC" class="max-h-20 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                    </div>
+                    <div class="swiper-slide flex items-center justify-center p-4">
+                        <img src="assets/partners/rbtv.png" alt="RBTV" class="max-h-20 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                    </div>
+                    <div class="swiper-slide flex items-center justify-center p-4">
+                        <img src="assets/partners/radarjogja.png" alt="Radar Jogja" class="max-h-20 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-gray-900 text-gray-300 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Company Info -->
+                <div class="lg:col-span-1">
+                    <a href="#" class="flex items-center gap-2 mb-4">
+                        <img src="assets/aifarm.png" alt="AiFarm" class="h-10 brightness-0 invert">
+                    </a>
+                    <h6 class="text-white font-semibold mb-2">PT AIFARM TEKNOLOGI AGRIKULTUR</h6>
+                    <p class="text-sm">End-to-end Dairy Goat Farming Solution.</p>
+                </div>
+
+                <!-- Useful Links -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Useful Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#hero" class="hover:text-primary transition-colors">Home</a></li>
+                        <li><a href="#about" class="hover:text-primary transition-colors">About</a></li>
+                        <li><a href="#clients" class="hover:text-primary transition-colors">Partner & Media Coverage</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Our Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="hover:text-primary transition-colors">Features</a></li>
+                        <li><a href="#pricing" class="hover:text-primary transition-colors">Product</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact Us</h4>
+                    <p class="text-sm">
+                        Mayungan B6 RT.07 Salakan,<br>
+                        Potorono, Banguntapan,<br>
+                        Bantul, D.I. Yogyakarta,<br>
+                        Indonesia - 55196
+                    </p>
+                    <p class="text-sm mt-4">
+                        <strong>Phone:</strong> +62 823 2329 4488<br>
+                        <strong>Email:</strong> admin@aifarm.id
+                    </p>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-sm">
+                    &copy; Copyright <strong>AiFarm</strong>. All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </a>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Initialize Swiper
+        const clientsSwiper = new Swiper('.clients-slider', {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 3,
+                },
+                768: {
+                    slidesPerView: 4,
+                },
+                1024: {
+                    slidesPerView: 5,
+                }
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileClose = document.getElementById('mobile-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+
+        mobileClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Active nav link
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>
