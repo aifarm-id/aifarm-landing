@@ -1,6 +1,6 @@
-# AiFarm Landing Page
+# Aifarm Landing Page
 
-Static landing page for AiFarm - Dairy Goat Farm Management Solution.
+Static landing page for Aifarm - Dairy Goat Farm Management Solution.
 
 ## Deployment to GitHub Pages
 
